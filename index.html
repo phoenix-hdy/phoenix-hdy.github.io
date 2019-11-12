@@ -233,7 +233,7 @@
                 <a href="/2019/11/12/article-name/">
                     <div class="img">
                         
-                        <img src="/imgs/preview/preview5.jpg" alt="线段树">
+                        <img src="/imgs/preview/preview4.jpg" alt="线段树">
                     </div>
                     <div class="info">
                         
@@ -272,7 +272,7 @@
             <p style="text-align: center;">
                 <a href="/2019/11/12/article-name/">
                     
-                    <img src="/imgs/preview/preview3.jpg" alt="线段树">
+                    <img src="/imgs/preview/preview4.jpg" alt="线段树">
                 </a>
             </p>
         </div>
@@ -313,7 +313,7 @@
                 <a href="/2019/11/11/hello-world/">
                     <div class="img">
                         
-                        <img src="/imgs/preview/preview2.jpg" alt="Hello World">
+                        <img src="/imgs/preview/preview5.jpg" alt="Hello World">
                     </div>
                     <div class="info">
                         
@@ -385,6 +385,8 @@
 </div>
 
 <!-- 加上这段代码原因： gitment在首页加载时, 如果找不到对应的控件会报错，此处加上，同时设置为none，防止报错 -->   
+  
+    <div id="comments-template" style="display:none"></div> 
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -471,13 +473,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/11/hello-world/">Hello World</a>
+                    <a href="/2019/11/12/article-name/">线段树</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/12/article-name/">线段树</a>
+                    <a href="/2019/11/11/hello-world/">Hello World</a>
                 </span>
             </li>
             
@@ -510,7 +512,7 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 16.823120823484565px;" class="tag-cloud-link">线段树</a>
+    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10.94694203027666px;" class="tag-cloud-link">线段树</a>
     
 </div>
                 
@@ -526,7 +528,7 @@
     </li>
     
     <li>
-        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+        <a href="https://blogzhy.cn/" target="_blank">张海洋</a>
     </li>
     
 </div>
@@ -544,6 +546,10 @@
     
     <li>
         <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+    <li>
+        <a href="511580480" target="_blank">QQ</a>
     </li>
     
 </div>
@@ -609,7 +615,7 @@
 </script>
 <script>
     window.slideConfig = {
-      prefix: '/imgs/slide/background',
+      prefix: 'slide/background',
       ext: 'jpg',
       maxCount: '6'
     }
@@ -620,5 +626,27 @@
 <script src="/js/oni.js"></script>
 
 
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = ''
+      window.commentConfig.owner = 'phoenix-hdy'
+      window.commentConfig.repo = 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git'
+      window.commentConfig.client_id = ''
+      window.commentConfig.client_secret = ''
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: '',
+        owner: 'phoenix-hdy',
+        repo: 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git',
+        client_id: '',
+        client_secret: '',
+        redirect_uri: ''
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
 
 </html>
