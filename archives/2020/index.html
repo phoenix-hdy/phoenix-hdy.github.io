@@ -12,7 +12,7 @@
     
     
     
-    <title>codeforces 597 div2 的D 题 | phoenix&#39;s blog</title>
+    <title>archive_a | phoenix&#39;s blog</title>
     <link href="http://yoursite.com" rel="prefetch" />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -116,7 +116,7 @@
                 
                 
                 
-                <li class="">
+                <li class="current">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -195,34 +195,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
+                    <article class="article well article-body" id="article-archive">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://yoursite.com">phoenix&#39;s blog</a>
         >
-        <span>codeforces 597 div2 的D 题</span>
+        <span>归档</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2019/11/13/tree/">codeforces 597 div2 的D 题</a>
+                <a href="/archives">归档</a>
             </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">最小生成树</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-11-13
-            </span>
-            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -230,40 +215,52 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2019/11/13/tree/">codeforces 597 div2 的D 题</a>
+                    <a href="/archives">归档</a>
                 </h4>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2019-11-13
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">最小生成树</a>
-                
-                
-                
-            </p>
         </center>
     </div>
-    <div class="content-article">
-        <p>[Shichikuji and Power Grid]<a href="https://codeforces.com/contest/1245/problem/D" target="_blank" rel="noopener">添加链接描述</a><br>codeforces 597 div2 的D 题，<br>题意：在一个二维平面上面，有n个城市，现在每个城市都没有电。<br>你可以选择一些城市建发电站，代价是c[i]；你也可以给每个城市拉电线，给城市(i,j)之间拉电线的代价是(abs(x[i]-x[j])+abs(y[i]-y[j]))*(k[i]+k[j])。<br>现在问你最少花费多少代价，能够使得全部城市都有电，输出方案。</p>
-<p>思路：写的时候无限自闭，最后A了（感谢龙佬），其实思路很简单，就是把这个题变成最小生成树问题就行了，相当于把供电站自身的花费变成了超级远点到供电站的距离，然后套一下最小生成树模板，就行了<br><img src="https://img-blog.csdnimg.cn/20191112221724712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h1ZGluZ3l1MQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=2e6+10;</span><br><span class="line">#define ll long long </span><br><span class="line">ll f[maxn],r[maxn];</span><br><span class="line">typedef pair&lt;ll,ll&gt; pil;</span><br><span class="line">struct node &#123;</span><br><span class="line">	ll x;int y;	</span><br><span class="line">&#125;p[maxn];</span><br><span class="line">struct Node &#123;</span><br><span class="line">	ll u, v, w;</span><br><span class="line">&#125;P[maxn];</span><br><span class="line">bool cmp(Node a,Node b)</span><br><span class="line">&#123;</span><br><span class="line">	return a.w&lt;b.w;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp2(pil a,pil b)</span><br><span class="line">&#123;</span><br><span class="line">	return a.first &lt;b.first;</span><br><span class="line">&#125;</span><br><span class="line">ll find(ll x)</span><br><span class="line">&#123;</span><br><span class="line">	return f[x]!=x?f[x]=find(f[x]):x;</span><br><span class="line">&#125;</span><br><span class="line">void join(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	x=find(x);</span><br><span class="line">	y=find(y);</span><br><span class="line">	if(x!=y)</span><br><span class="line">	f[x]=y;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">vector&lt;pil&gt; s,ss;</span><br><span class="line">int main()&#123;</span><br><span class="line">	ll n,pos,co;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i=0;i&lt;=n;i++) f[i]=i;</span><br><span class="line">    for(int i=1;i&lt;=n;i++) cin&gt;&gt;p[i].x&gt;&gt;p[i].y;	</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">	&#123; </span><br><span class="line">	   cin&gt;&gt;co;P[i].u=i;P[i].v=0;P[i].w=co;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=1;i&lt;=n;i++) cin&gt;&gt;r[i];</span><br><span class="line">	pos=n+1;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)</span><br><span class="line">	for(int j=i+1;j&lt;=n;j++)</span><br><span class="line">	&#123;</span><br><span class="line">	  ll mid=(abs(p[i].x-p[j].x)+abs(p[i].y-p[j].y))*(r[i]+r[j]);</span><br><span class="line">	  P[pos].u=j,P[pos].v=i,P[pos++].w=mid;	</span><br><span class="line">	&#125;</span><br><span class="line">	ll sum=0,a=0,b=0;</span><br><span class="line">	sort(P+1,P+pos+1,cmp);</span><br><span class="line">	for(int i=1;i&lt;=pos;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(find(P[i].u)!=find(P[i].v))</span><br><span class="line">		&#123;</span><br><span class="line">			join(P[i].u,P[i].v);</span><br><span class="line">			sum+=P[i].w;</span><br><span class="line">			if(P[i].u!=0&amp;&amp;P[i].v!=0)</span><br><span class="line">			a++,s.push_back(make_pair(P[i].u,P[i].v));</span><br><span class="line">			else b++,ss.push_back(make_pair(P[i].u,P[i].v));</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">	sort(ss.begin(),ss.end(),cmp2);</span><br><span class="line">	for(int i=0;i&lt;ss.size();i++)</span><br><span class="line">	&#123;  ll a1 = ss[i].first, a2 = ss[i].second;</span><br><span class="line">		if(a1)</span><br><span class="line">		cout&lt;&lt;a1&lt;&lt;&quot; &quot;;</span><br><span class="line">		else </span><br><span class="line">		cout&lt;&lt;a2&lt;&lt;&quot; &quot;; </span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;s.size();i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  ll a1 = s[i].first, a2 = s[i].second;</span><br><span class="line">        if (a1 &gt; a2)</span><br><span class="line">        swap(a1, a2);</span><br><span class="line">        cout &lt;&lt; a1 &lt;&lt; &quot; &quot; &lt;&lt; a2 &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="content-article" style="margin-top: 30px;">
+        
+        
+            <h1 style="font-size: 24px; margin-top: 40px;">2020年</h1>
+            
+        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+            
+             
+             
+                        <a href="/2020/07/16/2020%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%9C%BA%EF%BC%89/">2020牛客暑期多校训练营（第二场）</a>
+                        <br>
+            
+             
+                        </div>
+                    <h1 style="font-size: 24px; margin-top: 40px;">2019年</h1>
+                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
+                 
+             
+                        <a href="/2019/11/17/sort/">sort</a>
+                        <br>
+            
+             
+                        <a href="/2019/11/15/s/">Kruskal算法求最小生成树（模板）</a>
+                        <br>
+            
+             
+                        <a href="/2019/11/13/tree/">codeforces 597 div2 的D 题</a>
+                        <br>
+            
+             
+                        <a href="/2019/11/12/article-name/">线段树</a>
+                        <br>
+            
+             
+                        <a href="/2019/11/11/hello-world/">Hello World</a>
+                        <br>
+            
+                    </div>
+        
     </div>
 </article>
-
-
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = 'codeforces 597 div2 的D 题'
-    }
-</script>
-
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -418,17 +415,17 @@
 
                 
                 <li>
-                    <a href="/2019/11/13/tree/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/archives/2020/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/11/13/tree/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/archives/2020/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/2019/11/13/tree/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/archives/2020/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -436,15 +433,15 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 11.31929879695733px;" class="tag-cloud-link">线段树</a>
+    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 9.917648873755482px;" class="tag-cloud-link">线段树</a>
     
-    <a href="/tags/sort/" style="font-size: 17.45270258271864px;" class="tag-cloud-link">sort</a>
+    <a href="/tags/sort/" style="font-size: 18.118758859503416px;" class="tag-cloud-link">sort</a>
     
-    <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 13.525643794943884px;" class="tag-cloud-link">最小生成树</a>
+    <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 14.26691839016204px;" class="tag-cloud-link">最小生成树</a>
     
-    <a href="/tags/ACM/" style="font-size: 19.897911915215445px;" class="tag-cloud-link">ACM</a>
+    <a href="/tags/ACM/" style="font-size: 15.843754708151405px;" class="tag-cloud-link">ACM</a>
     
-    <a href="/tags/%E8%AE%AD%E7%BB%83/" style="font-size: 17.0209960206843px;" class="tag-cloud-link">训练</a>
+    <a href="/tags/%E8%AE%AD%E7%BB%83/" style="font-size: 10.482392434420639px;" class="tag-cloud-link">训练</a>
     
 </div>
                 
@@ -554,27 +551,5 @@
 <script src="/js/oni.js"></script>
 
 
-
-<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
-<script>
-    if(window.commentConfig) {
-      window.commentConfig.id = 'Wed Nov 13 2019 20:15:29 GMT+0800'
-      window.commentConfig.owner = 'phoenix-hdy'
-      window.commentConfig.repo = 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git'
-      window.commentConfig.client_id = ''
-      window.commentConfig.client_secret = ''
-      window.commentConfig.redirect_uri = ''
-    } else {
-      window.commentConfig = {
-      	id: 'Wed Nov 13 2019 20:15:29 GMT+0800',
-        owner: 'phoenix-hdy',
-        repo: 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git',
-        client_id: '',
-        client_secret: '',
-        redirect_uri: ''
-      }
-    }
-</script>
-<script src="/js/comment/gitment.js"></script>
 
 </html>
