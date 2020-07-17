@@ -1,254 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+<!--Head-->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="hdy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="GZh2jRE6IgVXx8SYpoRZYwcs4_Wy7vWEAeSIHCs3UE8"/>
+    <meta name="baidu-site-verification" content="5EmnBCPDrY" />
     
-    <meta name="description" content="acm">
+    <title>search | phoenix&#39;s blog</title>
+    <!--一言-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+    <!--mdui-->
+    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.2/css/mdui.min.css">
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
+    <!--jquery-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--theme-->
+    <link rel="stylesheet" href="/css/mdm.css">
+    <link rel="stylesheet" href="/css/mdm_theme_dark.css">
+    <script src="/js/mdm.js"></script>
     
+    <!--高亮-->
+    <link rel="stylesheet" href="/css/solarized-light.css">
+    <!--全局变灰-->
     
-    
-    
-    
-    
-    <title>Kruskal算法求最小生成树（模板） | phoenix&#39;s blog</title>
-    <link href="http://yoursite.com" rel="prefetch" />
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/aos.css">
-<link rel="stylesheet" href="/css/style.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/aos.js"></script>
-    <script src="/js/highslide/highslide-full.min.js"></script>
-    <link rel="stylesheet" href="/js/highslide/highslide.css">
-    <style type="text/css">
-        @media (max-width: 768px) {
-            body {
-                background-color: #f0f0f0;
-                background: url('/imgs/xsbg.gif');
-                background-attachment: fixed;
+    
+    <script src="/js/click-effect.js"></script>
+    
+
+    <!--本地搜索-->
+    <!-- <script src="js/search.js"></script> -->
+    <!--自动提交给百度-->
+    
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
             }
-        }
-    </style>
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
     
-    <!--<script type="text/javascript">
-      if (document.images) {
-        var avatar = new Image();
-        avatar.src = '/imgs/avatar.jpg'
-        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg,preview5.jpg,preview6.jpg'.split(',')
-        var previewsPreLoad = []
-        for(var i = 0; i < length; i++) {
-          previewsPreLoad.push(new Image())
-          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
-        }
-      }
-    </script>-->
-</head>
-<body>
-    <!-- 背景轮播图功能 -->
-    <section class="hidden-xs">
-    <ul class="cb-slideshow">
-        <li><span>天若</span></li>
-        <li><span>有情</span></li>
-        <li><span>天亦老</span></li>
-        <li><span>我为</span></li>
-        <li><span>长者</span></li>
-        <li><span>续一秒</span></li>
-    </ul>
-</section>
-    <!-- 欧尼酱功能, 谁用谁知道 -->
-    
-    <div class="gal-menu gal-dropdown">
-    <div class="circle" id="gal">
-        <div class="ring">
-            <a href="http://yoursite.com" class="menuItem" style="left: 50%; top: 15%;">首页</a>
-            
-            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
-            
-            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
-            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
-            <a href="/message" class="menuItem" style="left: 19.6891%; top: 67.5%;">留言板</a>
 
+    <!---google ad config-->
+    
+        <script data-ad-client="ca-pub-8181303774570877" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+</head>
+<!--header_bar-->
+<div class="mdui-appbar mdui-shadow-0" id="bar">
+    <div class="mdui-toolbar mdui-text-color-white">
+        <a class="mdui-btn mdui-btn-icon mdui-hidden-sm-up" mdui-menu="{target: '#example-2'}">
+            <i class="mdui-icon material-icons">menu</i>
+        </a>
+        <ul class="mdui-menu" id="example-2">
+        
+            <li class="mdui-menu-item">
+            <a href="/" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">home</i>
+                首页
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/tags" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">local_offer</i>
+                标签
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/archives" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">library_books</i>
+                归档
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/video" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">videocam</i>
+                视频
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+            <li class="mdui-menu-item">
+            <a href="/about" class="mdui-ripple">
+                <i class="mdui-menu-item-icon mdui-icon material-icons">error_outline</i>
+                关于
+            </a>
+            </li>
+            <li class="mdui-divider"></li>
+        
+        </ul>
+        <!--大屏-->
+        
+        <a href="/"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            首页
+        </a>
+        
+        <a href="/tags"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            标签
+        </a>
+        
+        <a href="/archives"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            归档
+        </a>
+        
+        <a href="/video"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            视频
+        </a>
+        
+        <a href="/about"
+            class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs">
+            关于
+        </a>
+        
+        <div class="mdui-toolbar-spacer"></div>
+        <!--
+        <div class="mdui-textfield mdui-textfield-expandable" style="max-width:500px;margin-right: -10px;">
+            <button class="mdui-textfield-icon mdui-btn mdui-btn-icon">
+                <i class="mdui-icon material-icons">search</i>
+            </button>
+            <input class="mdui-textfield-input mdui-text-color-white" id="local-search-input" type="text" placeholder="输入搜索内容..."/>
+            <button class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+        </div>-->
+
+        <button onclick="themeChange()"
+                class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-color-white" 
+                mdui-tooltip="{content: '切换亮/暗色模式'}">
+            <i class="mdui-icon material-icons" id="themeIcon">brightness_7</i>
+        </button>
+        <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-menu="{target: '#share_menu'}">
+            <i class="mdui-icon material-icons">share</i>
+        </button>
+        <ul class="mdui-menu" id="share_menu">
             
-            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+                <li class="mdui-menu-item">
+                    <button class="mdui-btn mdui-ripple mdui-btn-block" onclick="">
+                        QQ
+                    </button>
+                </li>
             
-        </div>
-        <audio id="audio" src="/imgs/oni.mp3"></audio>
+            </ul>
     </div>
 </div>
-    
-    <header class="navbar navbar-inverse" id="gal-header">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target=".bs-navbar-collapse"
-                    aria-expanded="false">
-                <span class="fa fa-lg fa-reorder"></span>
-            </button>
-            <a href="http://yoursite.com">
+<!--Header-->
+<header>
+    <div class="mdui-card-media" style="overflow: hidden;">
+        
+        <img src="" class="header-box blur mdui-img-fluid" onerror="{this.src='https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/img1.jpg'}" draggable="false">
+        
+            <div class="header-content">
                 
-                <style>
-                    #gal-header .navbar-brand {
-                        height: 54px;
-                        line-height: 24px;
-                        font-size: 28px;
-                        opacity: 1;
-                        background-color: rgba(0,0,0,0);
-                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
-                    }
-                </style>
-                <!-- 这里使用文字(navbar_text or config.title) -->
-                <div class="navbar-brand">phoenix&#39;s blog</div>
+                <span class="header_title">Kruskal算法求最小生成树（模板）</span></br>
                 
-            </a>
-        </div>
-        <div class="collapse navbar-collapse bs-navbar-collapse">
-            <ul class="nav navbar-nav" id="menu-gal">
-                
-                
-                <li class="">
-                    <a href="/">
-                        <i class="fa fa-home"></i>首页
-                    </a>
-                </li>
-                
-                
-                
-                <li class="">
-                    <a href="/archives">
-                        <i class="fa fa-archive"></i>归档
-                    </a>
-                </li>
-                
-                
-                
-                
-                <li class="dropdown">
-                    <!-- TODO 添加hover dropdown效果 -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
-                        <i class="fa fa-list"></i>分类
-                    </a>
-                    <ul class="dropdown-menu">
-                        
-                        
-                        <li>
-                            <a href="/categories/ACM/">ACM</a>
-                        </li>
-                        
-                        
-                        
-                    </ul>
-                </li>
-                
-                
-                
-                
-                
-                <li class="dropdown">
-                    <!-- TODO 添加hover dropdown效果 -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
-                        <i class="fa fa-tags"></i>标签
-                    </a>
-                    <ul class="dropdown-menu">
-                        
-                        
-                        <li>
-                            <a href="/tags/%E8%AE%AD%E7%BB%83/">训练</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/ACM/">ACM</a>
-                        </li>
-                        
-                        
-                        <li>
-                            <a href="/tags">...</a>
-                        </li>
-                        
-                        
-                    </ul>
-                </li>
-                
-                
-                
-                
-                <li class="">
-                    <a href="/about">
-                        <i class="fa fa-user"></i>关于我
-                    </a>
-                </li>
-                
-                
-            </ul>
-        </div>
+                <p id="hitokoto">一言加载中...</p>
+            </div>
+        </img>
     </div>
 </header>
-    <div id="gal-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="http://yoursite.com">phoenix&#39;s blog</a>
-        >
-        <span>Kruskal算法求最小生成树（模板）</span>
-    </div>
-    <!-- 大型设备详细文章 -->
-    <div class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2019/11/15/s/">Kruskal算法求最小生成树（模板）</a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/ACM/">ACM</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2019-11-15
-            </span>
-            
-        </div>
-    </div>
-    <!-- 小型设备详细文章 -->
-    <div class="visible-xs">
-        <center>
-            <div class="title-article">
-                <h4>
-                    <a href="/2019/11/15/s/">Kruskal算法求最小生成树（模板）</a>
-                </h4>
-            </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2019-11-15
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/ACM/">ACM</a>
-                
-                
-                
-            </p>
-        </center>
-    </div>
-    <div class="content-article">
-        <p>此算法可以称为“加边法”，初始最小生成树边数为0，每迭代一次就选择一条满足条件的最小代价边，加入到最小生成树的边集合里。</p>
+<body>
+  <div class="mdui-center" id="content-inner" style="width:95%; max-width:700pt;">
+    <!--博文详细内容-->
+<link rel="stylesheet" href="/css/post.css">
+<div>
+  <div class="">
+    <article class="article-content mdui-container mdui-center mdui-shadow-12">
+      <p>此算法可以称为“加边法”，初始最小生成树边数为0，每迭代一次就选择一条满足条件的最小代价边，加入到最小生成树的边集合里。</p>
 <ol>
 <li>把图中的所有边按代价从小到大排序；</li>
 <li>把图中的n个顶点看成独立的n棵树组成的森林；</li>
@@ -259,330 +192,100 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>;</span><br><span class="line"><span class="keyword">int</span> f[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> u;<span class="keyword">int</span> v;<span class="keyword">int</span> w;</span><br><span class="line">&#125;edges[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">   <span class="keyword">return</span>  a.w&lt;b.w;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[x]!=x)</span><br><span class="line">	f[x]=<span class="built_in">find</span>(f[x]);</span><br><span class="line">	<span class="keyword">return</span> f[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	x=<span class="built_in">find</span>(x);</span><br><span class="line">	y=<span class="built_in">find</span>(y);</span><br><span class="line">	<span class="keyword">if</span>(x!=y)</span><br><span class="line">	f[x]=y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	f[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  <span class="built_in">cin</span>&gt;&gt;edges[i].u&gt;&gt;edges[i].v&gt;&gt;edges[i].w;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(edges,edges+m,cmp);</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a=edges[i].u;<span class="keyword">int</span> b=edges[i].v;<span class="keyword">int</span> w=edges[i].w;</span><br><span class="line">		a=<span class="built_in">find</span>(a),b=<span class="built_in">find</span>(b);</span><br><span class="line">		<span class="keyword">if</span>(a!=b)</span><br><span class="line">		&#123;</span><br><span class="line">		join(a,b);</span><br><span class="line">		res+=w;	</span><br><span class="line">		cnt++;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(cnt &lt; n<span class="number">-1</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"impossible"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-    </div>
-</article>
-
-
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = 'Kruskal算法求最小生成树（模板）'
-    }
-</script>
-
-                </div>
-                <aside class="col-md-4 gal-left" id="sidebar">
-    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
-<aside id="sidebar-search">
-    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <form class="form-inline clearfix" id="search-form" method="get"
-              action="/search/index.html">
-            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
-            <button class="btn btn-danger btn-gal" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-    </div>
-</aside>
-    <aside id="sidebar-author">
-    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
-        <div class="panel-heading" style="text-align: center">
-            <i class="fa fa-quote-left"></i>
-            hdy
-            <i class="fa fa-quote-right"></i>
-        </div>
-        <div class="author-panel text-center">
-            <img src="/imgs/avatar.jpg" width="140" height="140"
-                 alt="个人头像" class="author-image">
-            <p class="author-description"><p>acm</p>
-</p>
-        </div>
-    </div>
-</aside>
-    
-    <aside id="sidebar-recent_comments">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-comments"></i>
-            最新评论
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush"></ul>
-    </div>
-</aside>
-    
-    <!-- 要配置好leancloud才能开启此小工具 -->
-    
-    
-    <aside id="sidebar-recent_posts">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-refresh"></i>
-            近期文章
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush">
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/07/16/2020%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%9C%BA%EF%BC%89/">2020牛客暑期多校训练营（第二场）</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/17/sort/">sort</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/15/s/">Kruskal算法求最小生成树（模板）</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/13/tree/">codeforces 597 div2 的D 题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/12/article-name/">线段树</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/11/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-        </ul>
-    </div>
-</aside>
-    
-    
-    <aside id="sidebar-rand_posts">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-refresh"></i>
-            随机文章
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush">
-            
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/07/16/2020%E7%89%9B%E5%AE%A2%E6%9A%91%E6%9C%9F%E5%A4%9A%E6%A0%A1%E8%AE%AD%E7%BB%83%E8%90%A5%EF%BC%88%E7%AC%AC%E4%BA%8C%E5%9C%BA%EF%BC%89/">2020牛客暑期多校训练营（第二场）</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/12/article-name/">线段树</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/11/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/15/s/">Kruskal算法求最小生成树（模板）</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/13/tree/">codeforces 597 div2 的D 题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/11/17/sort/">sort</a>
-                </span>
-            </li>
-            
-        </ul>
-    </div>
-</aside>
-    
-    
-    <aside id="gal-sets">
-        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-            <ul class="nav nav-pills pills-gal">
-
-                
-                <li>
-                    <a href="/2019/11/15/s/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
-                </li>
-                
-                
-                <li>
-                    <a href="/2019/11/15/s/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
-                </li>
-                
-                
-                <li>
-                    <a href="/2019/11/15/s/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
-                </li>
-                
-            </ul>
-            <div class="tab-content">
-                
-                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
-    
-    <a href="/tags/%E8%AE%AD%E7%BB%83/" style="font-size: 14.598985289600474px;" class="tag-cloud-link">训练</a>
-    
-    <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10.248635474506525px;" class="tag-cloud-link">线段树</a>
-    
-    <a href="/tags/ACM/" style="font-size: 9.782682686410421px;" class="tag-cloud-link">ACM</a>
-    
-    <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 11.261606643468706px;" class="tag-cloud-link">最小生成树</a>
-    
-    <a href="/tags/sort/" style="font-size: 13.21496970669065px;" class="tag-cloud-link">sort</a>
-    
-</div>
-                
-                
-                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
-    
-    <li>
-        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
-    </li>
-    
-    <li>
-        <a href="https://blogzhy.cn/" target="_blank">张海洋</a>
-    </li>
-    
-    <li>
-        <a href="https://dyingdown.github.io/" target="_blank">o_oyao</a>
-    </li>
-    
-</div>
-                
-                
-                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
-    
-    <li>
-        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
-    </li>
-    
-    <li>
-        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
-    </li>
-    
-    <li>
-        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
-    </li>
-    
-</div>
-                
+      
+    <div class="mdui-container">
+        <button class="mdui-center mdui-color-pink mdui-btn-icon mdui-btn mdui-btn-raised mdui-ripple"
+            mdui-dialog="{target: '#reward-dialog'}">赏</button>
+        <div class="mdui-dialog" id="reward-dialog">
+            <div class="reward-title">写博客不易，请我喝杯咖啡？ </div>
+            <div class="mdui-divider"></div>
+            <div class="mdui-tab mdui-tab-full-width" id="reward-tab">
+                <a href="#reward-alipay" class="mdui-ripple">支付宝</a>
+                <a href="#reward-wechat" class="mdui-ripple">微信</a>
             </div>
-        </div>
-    </aside>
-    
-</aside>
+            <div id="reward-alipay">
+                <img src="https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/alipay.jpg" class="mdui-center noclick">
+            </div>
+            <div id="reward-wechat">
+                <img src="https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/wechat.jpg" class="mdui-center noclick">
             </div>
         </div>
     </div>
-    <footer id="gal-footer">
-    <div class="container">
-        Copyright © 2018 hdy Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    <script type="text/javascript">
+        var tab = new mdui.Tab('#reward-tab');
+        mdui.JQ('#reward-dialog').on('open.mdui.dialog', function () {
+        tab.handleUpdate();
+        });
+    </script>
+
+
+    </article>
+    <div class="article-content mdui-container mdui-center mdui-shadow-12">
+      
+
+
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.13.0/js/md5.min.js"></script>
+
+    <div class="mdui-center">
+        <div class="mdui-center">
+            <article class="mdui-typo">
+                <h2>评论</h2>
+                <div id="gitalk-container"></div>
+            </article>
+        </div>
+    </div>
+
+  	<script type="text/javascript">
+		const gitalk = new Gitalk({
+			clientID: 'ecbf6316c9aa7a6bfd7a',
+			clientSecret: '5c875e5986ed75f4509d97acd16628b97f7506f1',
+			repo: 'tonychenn.github.io',
+			owner: 'tonychenn',
+			admin: ['tonychenn'],
+			id: md5(window.location.pathname),      // Ensure uniqueness and length less than 50 ，so use md5
+			distractionFreeMode: true  // Facebook-like distraction free mode
+		})
+		gitalk.render('gitalk-container')
+	</script>
+
+
+
+    </div>
+  </div>
+
+
+  <!-- <aside id="sidebar" class="mdui-shadow-2 mdui-hoverable">
+    <div class="widget">
+      <h3 class="title">目录</h3>
+       
+    </div>
+  </aside> -->
+</div>
+  </div>
+  <!--footer-->
+  <footer class="mdui-color-indigo">
+    <div class="mdui-container">
+        <div style="text-align: center; padding: 20px;">
+            <div >
+                Copyright &copy;
+                hdy&nbsp&nbsp2020
+                &nbspTheme By
+                <a href="https://github.com/TonyChenn/hexo-theme-mdm" target="_blank" rel="noopener">mdm</a>
+                <iframe style="margin-left: 2px; margin-bottom:-5px;" 
+                        src="https://ghbtns.com/github-btn.html?user=TonyChenn&repo=hexo-theme-mdm&type=star&count=true" 
+                        frameborder="0" scrolling="0" width="91px" height="20px">
+                </iframe>
+            </div>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp总访客<span id="busuanzi_value_site_uv"></span>人
+        </div>
     </div>
 </footer>
-
-<!-- 回到顶端 -->
-<div id="gal-gotop">
-    <i class="fa fa-angle-up"></i>
-</div>
 </body>
-<script src="/js/activate-power-mode.js"></script>
-<script>
-
-    // 配置highslide
-	hs.graphicsDir = '/js/highslide/graphics/'
-    hs.outlineType = "rounded-white";
-    hs.dimmingOpacity = 0.8;
-    hs.outlineWhileAnimating = true;
-    hs.showCredits = false;
-    hs.captionEval = "this.thumb.alt";
-    hs.numberPosition = "caption";
-    hs.align = "center";
-    hs.transitions = ["expand", "crossfade"];
-    hs.lang.number = '共%2张图, 当前是第%1张';
-    hs.addSlideshow({
-      interval: 5000,
-      repeat: true,
-      useControls: true,
-      fixedControls: "fit",
-      overlayOptions: {
-        opacity: 0.75,
-        position: "bottom center",
-        hideOnMouseOut: true
-      }
-    })
-
-    // 初始化aos
-    AOS.init({
-      duration: 1000,
-      delay: 0,
-      easing: 'ease-out-back'
-    });
-
-</script>
-<script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
-	// TODO 这里根据具体情况修改
-	document.body.addEventListener('input', POWERMODE);
-</script>
-<script>
-    window.slideConfig = {
-      prefix: '/imgs/slide/background',
-      ext: 'jpg',
-      maxCount: '8'
-    }
-</script>
-<script src="/js/hs.js"></script>
-<script src="/js/blog.js"></script>
-
-<script src="/js/oni.js"></script>
-
-
-
-<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
-<script>
-    if(window.commentConfig) {
-      window.commentConfig.id = 'Fri Nov 15 2019 21:02:56 GMT+0800'
-      window.commentConfig.owner = 'phoenix-hdy'
-      window.commentConfig.repo = 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git'
-      window.commentConfig.client_id = ''
-      window.commentConfig.client_secret = ''
-      window.commentConfig.redirect_uri = ''
-    } else {
-      window.commentConfig = {
-      	id: 'Fri Nov 15 2019 21:02:56 GMT+0800',
-        owner: 'phoenix-hdy',
-        repo: 'git@github.com:phoenix-hdy/phoenix-hdy.github.io.git',
-        client_id: '',
-        client_secret: '',
-        redirect_uri: ''
-      }
-    }
-</script>
-<script src="/js/comment/gitment.js"></script>
-
+<!--goTop-->
+<div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-pink">
+    <i class="mdui-icon material-icons">arrow_upward</i>
+</div>
 </html>
